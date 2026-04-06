@@ -14,6 +14,8 @@ import {
   Cell,
 } from "recharts";
 
+
+
 const WS_URL = "wss://coldchain-live-backend-e3a4hnfycqdjh8bf.northeurope-01.azurewebsites.net";
 const TEMP_LIMIT = 8;
 const MAX_FEED = 30;
@@ -106,7 +108,35 @@ export default function App() {
   const markersRef = useRef({});
   const pulsePhaseRef = useRef(0);
 
+
   // create map once
+
+  useEffect(() => {
+  console.log("CONNECTING TO WS:", WS_URL);
+
+  const ws = new WebSocket(WS_URL);
+
+  ws.onopen = () => console.log("WebSocket connected");
+  ws.onclose = () => console.log("WebSocket disconnected");
+  ws.onerror = (err) => console.log("WebSocket error", err);
+
+  ws.onmessage = (event) => {
+    console.log("DATA RECEIVED:", event.data);
+  };
+
+  return () => {
+    ws.close();
+  };
+}, []);
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
