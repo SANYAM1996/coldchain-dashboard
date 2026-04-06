@@ -14,7 +14,7 @@ import {
   Cell,
 } from "recharts";
 
-const WS_URL = "ws://localhost:8765";
+const WS_URL = "wss://coldchain-live-backend-e3a4hnfycqdjh8bf.northeurope-01.azurewebsites.net";
 const TEMP_LIMIT = 8;
 const MAX_FEED = 30;
 const MAX_HISTORY = 20;
